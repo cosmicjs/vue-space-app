@@ -17,6 +17,9 @@ export default {
 }
 </script>
 
-<style lang="scss">
-
+<style lang="less">
+#app {
+  background-color: #000;
+  height: 100%;
+}
 </style>

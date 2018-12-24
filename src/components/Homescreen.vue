@@ -1,6 +1,6 @@
 <template lang="html">
-  <div class="Homescreen">
-    Testing
+  <div class="homescreen">
+test
   </div>
 
 </template>
@@ -11,4 +11,8 @@ export default {
 </script>
 
 <style lang="css">
+.homescreen {
+  color: red;
+  height: 100vh;
+}
 </style>
