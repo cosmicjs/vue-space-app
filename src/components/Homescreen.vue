@@ -7,9 +7,15 @@
 
 <script>
 import Navbar from './Navbar.vue'
+import {token} from '../authenticate.js'
 export default {
   components: {
     Navbar
+  },
+  mounted() {
+    console.log(this.$store.state.count)
+  },
+  methods: {
   }
 }
 </script>
