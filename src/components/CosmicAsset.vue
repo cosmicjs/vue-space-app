@@ -27,7 +27,6 @@ export default {
       this.cosmicObj.metafields.map((field) => {
         if (field.title === 'default_image') return defaultImage = field.url
       })
-      console.log(defaultImage)
       return defaultImage
     },
     selectedAsset() {
