@@ -1,9 +1,11 @@
 <template lang="html">
   <div class="homescreen">
-    <navbar></navbar>
+    <navbar />
     <div class="jumbotron" v-html="homepageContent"></div>
     <div class="cosmic-object-select">
-
+      <div class="cosmic-object" v-on:click="setSelectedAsset(index)" v-for="(obj, index) in cosmicAssetObjs" :key="index">
+         <cosmic-asset :cosmicObj="obj" :assetKey="index" class="cosmic-asset" />
+      </div>
     </div>
   </div>
 
@@ -15,13 +17,15 @@ import CosmicAsset from './CosmicAsset.vue'
 
 export default {
   components: {
-    Navbar
+    Navbar,
+    CosmicAsset
   },
   data() {
     return {
       // homepage data from Cosmic API
       homepageData: '',
-      homepageContent: ''
+      homepageContent: '',
+      cosmicAssetObjs: [],
     }
   },
   mounted() {
@@ -36,13 +40,15 @@ export default {
     write_key: ''
     })
     bucket.getBucket().then(data => {
-      console.log(data.bucket.objects)
+      console.log(data)
       // Loop through returned bucket data
       // get the appropriate object, and assign to the right value
       let homepageObj
       data.bucket.objects.map((object) => {
-        if (object.slug = 'homepage') {
+        if (object.title === 'Homepage') {
           homepageObj = object
+        } else {
+          this.cosmicAssetObjs.push(object)
         }
       })
       if (homepageObj) this.assembleHomepageData(homepageObj)
@@ -51,17 +57,33 @@ export default {
     })
     },
   methods: {
-    assembleHomepageData(homepageObjFromAPI) {
+    assembleHomepageData (homepageObjFromAPI) {
       this.homepageData = homepageObjFromAPI
       this.homepageContent = homepageObjFromAPI.content
+    },
+    setSelectedAsset (index) {
+      this.$store.commit('setSelectedCosmicIndex', index)
     }
-  }
+  },
+  computed: {}
 }
 </script>
 
 <style lang="css">
-.homescreen {
-  color: red;
-  height: 100vh;
-}
+  .homescreen {
+    height: 100vh;
+  }
+
+  .text {
+    color: white;
+  }
+
+  .cosmic-object-select {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .cosmic-asset {
+    cursor: pointer;
+  }
 </style>
