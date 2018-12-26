@@ -1,32 +1,35 @@
 <template lang="html">
   <div class="homescreen">
-    <navbar />
-    <!-- <div class="jumbotron" v-html="homepageContent"></div> -->
-    <div class="cosmic-object-select row">
-      <div class="cosmic-object col-md-3" v-on:click="setSelectedAsset(index)" v-for="(obj, index) in cosmicAssetObjs.slice(0,4)" :key="index">
-         <cosmic-asset :cosmicObj="obj" :assetKey="index" class="cosmic-asset" />
-      </div>
+    <div class="cosmic-object-selector" v-show="selectedIndex == undefined">
+      <h1> I want to learn more about.... </h1>
+      <div class="cosmic-object-select row">
+        <div class="cosmic-object col-md-3" v-on:click="setSelectedAsset(index)" v-for="(obj, index) in cosmicAssetObjs.slice(0,4)" :key="index">
+           <cosmic-asset :cosmicObj="obj" :assetKey="index" class="cosmic-asset" />
+        </div>
 
-      <div class="cosmic-object col-md-3" v-on:click="setSelectedAsset(index+4)" v-for="(obj, index) in cosmicAssetObjs.slice(4,8)" :key="index+4">
-         <cosmic-asset :cosmicObj="obj" :assetKey="index+4" class="cosmic-asset" />
-      </div>
+        <div class="cosmic-object col-md-3" v-on:click="setSelectedAsset(index+4)" v-for="(obj, index) in cosmicAssetObjs.slice(4,8)" :key="index+4">
+           <cosmic-asset :cosmicObj="obj" :assetKey="index+4" class="cosmic-asset" />
+        </div>
 
-      <div class="cosmic-object col-md-3" v-on:click="setSelectedAsset(index+8)" v-for="(obj, index) in cosmicAssetObjs.slice(8)" :key="index+8">
-         <cosmic-asset :cosmicObj="obj" :assetKey="index+8" class="cosmic-asset" />
+        <div class="cosmic-object col-md-3" v-on:click="setSelectedAsset(index+8)" v-for="(obj, index) in cosmicAssetObjs.slice(8)" :key="index+8">
+           <cosmic-asset :cosmicObj="obj" :assetKey="index+8" class="cosmic-asset" />
+        </div>
       </div>
     </div>
+    <cosmic-page class="cosmic-page" v-show="selectedIndex != undefined" :cosmicObj="cosmicAssetObjs[selectedIndex]" />
   </div>
-
 </template>
 
 <script>
 import Navbar from './Navbar.vue'
 import CosmicAsset from './CosmicAsset.vue'
+import CosmicPage from './CosmicPage.vue'
 
 export default {
   components: {
     Navbar,
-    CosmicAsset
+    CosmicAsset,
+    CosmicPage
   },
   data() {
     return {
@@ -85,9 +88,15 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style scoped lang="css">
   .homescreen {
     height: 100vh;
+    text-align: center;
+    color: lightslategray;
+  }
+
+  .homescreen h1 {
+    margin-top: 25px;
   }
 
   .text {
@@ -105,5 +114,9 @@ export default {
 
   .cosmic-object {
     margin: 10px 0px;
+  }
+
+  .cosmic-page {
+    height: 100%;
   }
 </style>

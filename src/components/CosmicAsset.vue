@@ -5,9 +5,6 @@
       <h5 class="cosmic-name card-title">
         {{cosmicObj.title}}
       </h5>
-      <div class="cosmic-asset-details" v-show="selectedAsset==assetKey">
-        <div class="cosmic-content" v-html="cosmicContent"></div>
-      </div>
     </div>
 
   </div>
@@ -45,7 +42,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style scoped lang="css">
   .card {
     background-color: #000;
     border: 1px solid blueviolet;
