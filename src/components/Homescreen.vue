@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-    <cosmic-page class="cosmic-page" v-show="selectedIndex != undefined" :cosmicObj="cosmicAssetObjs[selectedIndex]" />
+    <cosmic-page class="cosmic-page" v-if="selectedIndex != undefined" :cosmicObj="cosmicAssetObjs[selectedIndex]" />
   </div>
 </template>
 
