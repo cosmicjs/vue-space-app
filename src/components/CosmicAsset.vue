@@ -1,9 +1,15 @@
 <template lang="html">
-  <div class="cosmic-asset-component">
-    <img class="cosmic-image" :src="defaultImage" />
-    <div class="cosmic-asset-details" v-show="selectedAsset==assetKey">
-      <div class="cosmic-content" v-html="cosmicContent"></div>
+  <div class="cosmic-asset-component card">
+    <img class="cosmic-image card-img-top" :src="defaultImage" />
+    <div class="card-body">
+      <h5 class="cosmic-name card-title">
+        {{cosmicObj.title}}
+      </h5>
+      <div class="cosmic-asset-details" v-show="selectedAsset==assetKey">
+        <div class="cosmic-content" v-html="cosmicContent"></div>
+      </div>
     </div>
+
   </div>
 </template>
 
@@ -40,11 +46,20 @@ export default {
 </script>
 
 <style lang="css">
-  .cosmic-asset {
-    color: white;
+  .card {
+    background-color: #000;
+    border: 1px solid blueviolet;
+    color: blueviolet;
   }
+
   .cosmic-image {
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
+    margin: 10px auto;
+    border-radius: 50%;
+  }
+
+  .cosmic-name {
+    text-align: center;
   }
 </style>
