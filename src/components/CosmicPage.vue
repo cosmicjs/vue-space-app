@@ -3,7 +3,7 @@
     <div class="row">
       <div class="page-left col-md-4">
         <div class="return-to-select">
-          Back
+        <i class="fas fa-arrow-left"></i>  Back
         </div>
         <img class="cosmic-page-image" :src="defaultImage" />
         <h3>{{cosmicTitle}}</h3>
@@ -27,9 +27,7 @@ export default {
       required: true
     }
   },
-  mounted() {
-    console.log(this.cosmicObj)
-  },
+  mounted() {},
   data() {
     return {}
   },
@@ -46,10 +44,10 @@ export default {
       return this.$store.state.selectedCosmicIndex
     },
     cosmicTitle() {
-      return this.cosmicObj.title
+      return this.cosmicObj && this.cosmicObj.title
     },
     cosmicContent() {
-      return this.cosmicObj.content
+      return this.cosmicObj && this.cosmicObj.content
     }
   }
 }
