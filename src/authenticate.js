@@ -4,7 +4,7 @@ function token() {
     email: 'abey.joy21@gmail.com',
     password: 'cCR7_B54*'
   }).then(data => {
-    console.log(data.message)
+    console.log(data.message, data.token)
     return data.token
   }).catch(err => {
     console.log(err)
