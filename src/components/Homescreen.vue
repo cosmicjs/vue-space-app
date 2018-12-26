@@ -1,7 +1,9 @@
 <template lang="html">
   <div class="homescreen">
     <navbar></navbar>
-    <div class="jumbotron" v-html="homepageContent">
+    <div class="jumbotron" v-html="homepageContent"></div>
+    <div class="cosmic-object-select">
+
     </div>
   </div>
 
@@ -9,7 +11,8 @@
 
 <script>
 import Navbar from './Navbar.vue'
-import {token} from '../authenticate.js'
+import CosmicAsset from './CosmicAsset.vue'
+
 export default {
   components: {
     Navbar
