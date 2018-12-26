@@ -70,10 +70,18 @@ export default {
       this.homepageContent = homepageObjFromAPI.content
     },
     setSelectedAsset (index) {
-      this.$store.commit('setSelectedCosmicIndex', index)
+      if (this.selectedIndex === index) {
+        this.$store.commit('setSelectedCosmicIndex', undefined)
+      } else {
+        this.$store.commit('setSelectedCosmicIndex', index)
+      }
     }
   },
-  computed: {}
+  computed: {
+    selectedIndex () {
+      return this.$store.state.selectedCosmicIndex
+    }
+  }
 }
 </script>
 
@@ -93,5 +101,9 @@ export default {
 
   .cosmic-asset {
     cursor: pointer;
+  }
+
+  .cosmic-object {
+    margin: 10px 0px;
   }
 </style>
