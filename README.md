@@ -1,6 +1,7 @@
 # cosmicjs-space-scholastic
 
 > Scholastic site about Space built using CosmicJS
+![alt text](./src/assets/screenshot.png)
 
 ## Build Setup
 
