@@ -17,6 +17,9 @@
       </div>
     </div>
     <cosmic-page class="cosmic-page" v-if="selectedIndex != undefined" :cosmicObj="cosmicAssetObjs[selectedIndex]" />
+    <div class="footer">
+      Proudly powered by <a href="s">Cosmic JS</a>
+    </div>
   </div>
 </template>
 
@@ -116,5 +119,9 @@ export default {
 
   .cosmic-page {
     height: 100%;
+  }
+
+  .footer {
+    padding: 25px;
   }
 </style>
