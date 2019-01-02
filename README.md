@@ -1,5 +1,5 @@
 # cosmicjs-space-scholastic
-Find out how I built this project (![here](https://cosmicjs.com/articles/preview/5c232ca833ae71656325d99a)): 
+Find out how I built this project [here](https://cosmicjs.com/articles/preview/5c232ca833ae71656325d99a) 
 > Scholastic site about Space built using CosmicJS
 ![alt text](./src/assets/screenshot.png)
 
