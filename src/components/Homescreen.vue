@@ -42,9 +42,7 @@ export default {
   mounted() {
     let t = this.$store.state.token
     let self = this
-    const Cosmic = require('cosmicjs')({
-      token: t // required
-    })
+    const Cosmic = require('cosmicjs')()
     const bucket = Cosmic.bucket({
     slug: 'cosmic-space',
     read_key: '',

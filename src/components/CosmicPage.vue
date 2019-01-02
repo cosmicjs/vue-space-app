@@ -1,6 +1,5 @@
 <template lang="html">
   <div class="cosmic-page-component">
-    <!-- {{cosmicObj}} -->
     <div class="row">
       <div class="page-left col-md-8">
         <div class="return-to-select" v-on:click="returnToSelectPage()">
@@ -27,9 +26,6 @@
 
       </div>
     </div>
-
-
-    <!-- <div class="cosmic-content" v-html="cosmicContent"></div> -->
   </div>
 </template>
 
