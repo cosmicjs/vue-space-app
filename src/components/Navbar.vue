@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="vue-navbar">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark space-navbar">
       <a class="navbar-brand" href="#">Space Expo</a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,4 +30,7 @@ export default {
 </script>
 
 <style lang="css">
+  nav.space-navbar {
+    background-color: #00171F !important;
+  }
 </style>

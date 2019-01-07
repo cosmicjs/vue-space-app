@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="homescreen">
-    <div class="cosmic-object-selector" v-show="selectedIndex == undefined">
+    <headerArea></headerArea>
+    <!-- <div class="cosmic-object-selector" v-show="selectedIndex == undefined">
       <h1> I want to learn more about.... </h1>
       <div class="cosmic-object-select row">
         <div class="cosmic-object col-md-3" v-on:click="setSelectedAsset(index)" v-for="(obj, index) in cosmicAssetObjs.slice(0,4)" :key="index">
@@ -16,7 +17,7 @@
         </div>
       </div>
     </div>
-    <cosmic-page class="cosmic-page" v-if="selectedIndex != undefined" :cosmicObj="cosmicAssetObjs[selectedIndex]" />
+    <cosmic-page class="cosmic-page" v-if="selectedIndex != undefined" :cosmicObj="cosmicAssetObjs[selectedIndex]" /> -->
     <div class="footer">
       Proudly powered by <a href="s">Cosmic JS</a>
     </div>
@@ -24,13 +25,13 @@
 </template>
 
 <script>
-import Navbar from './Navbar.vue'
+import HeaderArea from './Header.vue'
 import CosmicAsset from './CosmicAsset.vue'
 import CosmicPage from './CosmicPage.vue'
 
 export default {
   components: {
-    Navbar,
+    HeaderArea,
     CosmicAsset,
     CosmicPage
   },
