@@ -46,7 +46,6 @@ export default {
   methods: {
     returnToSelectPage() {
       this.$store.commit('setSelectedCosmicIndex', undefined)
-      location.reload(true)
     }
   },
   computed: {
