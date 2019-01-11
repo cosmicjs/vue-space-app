@@ -1,12 +1,16 @@
 <template lang="html">
-  <div class="cosmic-asset-component card">
-    <img class="cosmic-image card-img-top" :src="defaultImage" />
-    <div class="card-body">
-      <h5 class="cosmic-name card-title">
-        {{cosmicObj.title}}
-      </h5>
+  <div>
+    <div class="cosmic-asset-component card" v-if="!imageMode">
+      <img class="cosmic-image card-img-top" :src="defaultImage" />
+      <div class="card-body">
+        <h5 class="cosmic-name card-title">
+          {{cosmicObj.title}}
+        </h5>
+      </div>
     </div>
-
+    <div class="asset-image-mode" v-else>
+      <img class="cosmic-image" :src="defaultImage" />
+    </div>
   </div>
 </template>
 
@@ -19,6 +23,10 @@ export default {
     },
     assetKey: {
       required: true
+    },
+    imageMode: {
+      required: false,
+      type: Boolean
     }
   },
   data() {
