@@ -1,24 +1,30 @@
 <template lang="html">
   <div class="homescreen">
     <div class="cosmic-object-selector" v-show="selectedIndex == undefined">
-      <navbar/>
-      <div class="cosmic-selection-titles container">
-        <h1> The Solar System.</h1>
-        <h1> We live in it, why not learn more about it?</h1>
+      <div class="cosmic-panel section">
+        <navbar/>
+        <div class="cosmic-selection-titles container">
+          <h1> The Solar System.</h1>
+          <h1> We live in it, why not learn more about it?</h1>
+        </div>
       </div>
+      
       <div class="cosmic-object-select row">
-        <cosmic-asset :cosmicObj="heroObj" :heroMode="true" :assetKey="11" class="cosmic-asset hero-asset" />
-        <div class="cosmic-object col-md-3" v-on:click="setSelectedAsset(index + 1)" v-for="(obj, index) in cosmicAssetObjs.slice(1,4)" :key="index">
-           <cosmic-asset :cosmicObj="obj" :assetKey="index" class="cosmic-asset" />
+        <section class="section cosmic-object cosmic-panel" :class="generateSectionClass(index)" v-on:click="setSelectedAsset(index + 1)" v-for="(obj, index) in cosmicAssetObjs" :key="index">
+           <cosmic-asset :heroMode="true" :cosmicObj="obj" :assetKey="index" class="cosmic-asset hero-asset" />
+        </section>
+        
+        <!-- <div class="cosmic-object" v-on:click="setSelectedAsset(index + 1)" v-for="(obj, index) in cosmicAssetObjs.slice(1,4)" :key="index">
+           <cosmic-asset :heroMode="true" :cosmicObj="obj" :assetKey="index" class="cosmic-asset" />
         </div>
 
-        <div class="cosmic-object col-md-3" v-on:click="setSelectedAsset(index+4)" v-for="(obj, index) in cosmicAssetObjs.slice(4,8)" :key="index+4">
-           <cosmic-asset :cosmicObj="obj" :assetKey="index+4" class="cosmic-asset" />
+        <div class="cosmic-object" v-on:click="setSelectedAsset(index+4)" v-for="(obj, index) in cosmicAssetObjs.slice(4,8)" :key="index+4">
+           <cosmic-asset :heroMode="true" :cosmicObj="obj" :assetKey="index+4" class="cosmic-asset" />
         </div>
 
-        <div class="cosmic-object col-md-3" v-on:click="setSelectedAsset(index+8)" v-for="(obj, index) in cosmicAssetObjs.slice(8)" :key="index+8">
-           <cosmic-asset :cosmicObj="obj" :assetKey="index+8" class="cosmic-asset" />
-        </div>
+        <div class="cosmic-object" v-on:click="setSelectedAsset(index+8)" v-for="(obj, index) in cosmicAssetObjs.slice(8)" :key="index+8">
+           <cosmic-asset :heroMode="true" :cosmicObj="obj" :assetKey="index+8" class="cosmic-asset" />
+        </div> -->
       </div>
     </div>
     <cosmic-page class="cosmic-page" v-if="selectedIndex != undefined" :cosmicObj="cosmicAssetObjs[selectedIndex]" />
@@ -27,7 +33,6 @@
     </div>
   </div>
 </template>
-
 <script>
 
 import Navbar from './Navbar.vue'
@@ -47,6 +52,8 @@ export default {
       homepageContent: '',
       heroObj: {},
       cosmicAssetObjs: [],
+      scrollOptions: {
+      }
     }
   },
   mounted() {
@@ -75,6 +82,7 @@ export default {
     }).catch(err => {
       console.log('Error getting bucket data:', err)
     })
+    
     },
   methods: {
     assembleHomepageData (homepageObjFromAPI) {
@@ -87,6 +95,9 @@ export default {
       } else {
         this.$store.commit('setSelectedCosmicIndex', index)
       }
+    },
+    generateSectionClass (index) {
+      return `cosmic-section-${index}`
     }
   },
   computed: {
@@ -106,6 +117,8 @@ export default {
     height: 100vh;
     text-align: center;
     color: lightslategray;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
   }
 
   .homescreen h1 {
@@ -131,7 +144,7 @@ export default {
   }
 
   .cosmic-object {
-    margin: 10px 0px;
+    width: 100%;
   }
 
   .cosmic-page {
@@ -140,5 +153,10 @@ export default {
 
   .footer {
     padding: 25px;
+  }
+  
+  .header-expo, .cosmic-panel {
+    height: 100vh;
+    scroll-snap-align: start;
   }
 </style>

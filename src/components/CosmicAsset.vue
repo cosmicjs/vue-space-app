@@ -57,8 +57,8 @@ export default {
 <style scoped lang="css">
   .card {
     background-color: #000;
-    border: 1px solid blueviolet;
-    color: blueviolet;
+    /* border: 1px solid white; */
+    color: white;
   }
 
   .cosmic-image {
