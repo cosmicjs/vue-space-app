@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="homescreen">
     <div class="cosmic-object-selector" v-show="selectedIndex == undefined">
-      <div class="cosmic-panel section">
+      <div class="cosmic-header cosmic-panel section">
         <navbar/>
         <div class="cosmic-selection-titles container">
           <h1> The Solar System.</h1>
@@ -10,21 +10,11 @@
       </div>
       
       <div class="cosmic-object-select row">
-        <section class="section cosmic-object cosmic-panel" :class="generateSectionClass(index)" v-on:click="setSelectedAsset(index + 1)" v-for="(obj, index) in cosmicAssetObjs" :key="index">
-           <cosmic-asset :heroMode="true" :cosmicObj="obj" :assetKey="index" class="cosmic-asset hero-asset" />
+        <section class="section cosmic-object cosmic-panel" :class="generateSectionClass(index)" v-for="(obj, index) in cosmicAssetObjs" :key="index">
+           <!-- <cosmic-asset :heroMode="true" :cosmicObj="obj" :assetKey="index" class="cosmic-asset hero-asset" /> -->
+           <cosmic-page class="cosmic-page" :cosmicObj="cosmicAssetObjs[index]" />
         </section>
         
-        <!-- <div class="cosmic-object" v-on:click="setSelectedAsset(index + 1)" v-for="(obj, index) in cosmicAssetObjs.slice(1,4)" :key="index">
-           <cosmic-asset :heroMode="true" :cosmicObj="obj" :assetKey="index" class="cosmic-asset" />
-        </div>
-
-        <div class="cosmic-object" v-on:click="setSelectedAsset(index+4)" v-for="(obj, index) in cosmicAssetObjs.slice(4,8)" :key="index+4">
-           <cosmic-asset :heroMode="true" :cosmicObj="obj" :assetKey="index+4" class="cosmic-asset" />
-        </div>
-
-        <div class="cosmic-object" v-on:click="setSelectedAsset(index+8)" v-for="(obj, index) in cosmicAssetObjs.slice(8)" :key="index+8">
-           <cosmic-asset :heroMode="true" :cosmicObj="obj" :assetKey="index+8" class="cosmic-asset" />
-        </div> -->
       </div>
     </div>
     <cosmic-page class="cosmic-page" v-if="selectedIndex != undefined" :cosmicObj="cosmicAssetObjs[selectedIndex]" />
@@ -109,6 +99,9 @@ export default {
 </script>
 
 <style scoped lang="css">
+  .cosmic-header {
+    padding-top: 25px;
+  }
   .cosmic-selection-titles {
     text-align: left;
     color: white;

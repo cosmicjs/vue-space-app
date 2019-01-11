@@ -2,9 +2,6 @@
   <div class="cosmic-page-component">
     <div class="row">
       <div class="page-left col-md-8">
-        <div class="return-to-select" v-on:click="returnToSelectPage()">
-          <i class="fas fa-arrow-left"></i> Back
-        </div>
         <img class="cosmic-page-image" :src="defaultImage" />
         <h3>{{cosmicTitle}}</h3>
         <div class="cosmic-page-content" v-html="cosmicContent"></div>
