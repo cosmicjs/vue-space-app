@@ -1,9 +1,14 @@
 <template lang="html">
   <div class="homescreen">
     <div class="cosmic-object-selector" v-show="selectedIndex == undefined">
-      <h1> I want to learn more about.... </h1>
+      <navbar/>
+      <div class="cosmic-selection-titles container">
+        <h1> The Solar System.</h1>
+        <h1> We live in it, why not learn more about it?</h1>
+      </div>
       <div class="cosmic-object-select row">
-        <div class="cosmic-object col-md-3" v-on:click="setSelectedAsset(index)" v-for="(obj, index) in cosmicAssetObjs.slice(0,4)" :key="index">
+        <cosmic-asset :cosmicObj="heroObj" :heroMode="true" :assetKey="11" class="cosmic-asset hero-asset" />
+        <div class="cosmic-object col-md-3" v-on:click="setSelectedAsset(index + 1)" v-for="(obj, index) in cosmicAssetObjs.slice(1,4)" :key="index">
            <cosmic-asset :cosmicObj="obj" :assetKey="index" class="cosmic-asset" />
         </div>
 
@@ -25,12 +30,13 @@
 
 <script>
 
+import Navbar from './Navbar.vue'
 import CosmicAsset from './CosmicAsset.vue'
 import CosmicPage from './CosmicPage.vue'
 
 export default {
   components: {
-    HeaderArea,
+    Navbar,
     CosmicAsset,
     CosmicPage
   },
@@ -39,6 +45,7 @@ export default {
       // homepage data from Cosmic API
       homepageData: '',
       homepageContent: '',
+      heroObj: {},
       cosmicAssetObjs: [],
     }
   },
@@ -62,6 +69,7 @@ export default {
         } else {
           this.cosmicAssetObjs.push(object)
         }
+        this.heroObj = this.cosmicAssetObjs[0]
       })
       if (homepageObj) this.assembleHomepageData(homepageObj)
     }).catch(err => {
@@ -90,6 +98,10 @@ export default {
 </script>
 
 <style scoped lang="css">
+  .cosmic-selection-titles {
+    text-align: left;
+    color: white;
+  }
   .homescreen {
     height: 100vh;
     text-align: center;
@@ -111,6 +123,11 @@ export default {
 
   .cosmic-asset {
     cursor: pointer;
+    width: 100%;
+  }
+  
+  .cosmic-asset.hero-asset {
+    width: 100%;
   }
 
   .cosmic-object {

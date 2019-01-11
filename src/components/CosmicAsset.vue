@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <div class="cosmic-asset-component card" v-if="!imageMode">
+    <div class="cosmic-asset-component card" v-if="!imageMode && !heroMode">
       <img class="cosmic-image card-img-top" :src="defaultImage" />
       <div class="card-body">
         <h5 class="cosmic-name card-title">
@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="asset-image-mode" v-else>
-      <img class="cosmic-image" :src="defaultImage" />
+      <img class="cosmic-image" :src="defaultImage" :class="[heroMode ? 'heroImgClass' : '']" />
     </div>
   </div>
 </template>
@@ -27,6 +27,10 @@ export default {
     imageMode: {
       required: false,
       type: Boolean
+    },
+    heroMode: {
+      required: false,
+      type: Boolean
     }
   },
   data() {
@@ -35,7 +39,7 @@ export default {
   computed: {
     defaultImage() {
       let defaultImage
-      this.cosmicObj.metafields.map((field) => {
+      this.cosmicObj && this.cosmicObj.metafields && this.cosmicObj.metafields.map((field) => {
         if (field.title === 'default_image') return defaultImage = field.url
       })
       return defaultImage
@@ -66,5 +70,11 @@ export default {
 
   .cosmic-name {
     text-align: center;
+  }
+  
+  .cosmic-image.heroImgClass {
+    height: 500px;
+    width: 500px;
+    display: block;
   }
 </style>
