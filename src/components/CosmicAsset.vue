@@ -45,8 +45,12 @@ export default {
 <style scoped lang="css">
   .card {
     background-color: #000;
-    border: 1px solid blueviolet;
-    color: blueviolet;
+    border: 1px solid lightslategray;
+    color: cadetblue;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
   }
 
   .cosmic-image {
