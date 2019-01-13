@@ -6,7 +6,7 @@
           <i class="fas fa-arrow-left"></i> Back
         </div>
         <img class="cosmic-page-image" :src="defaultImage" />
-        <h3>{{cosmicTitle}}</h3>
+        <h2>{{cosmicTitle}}</h2>
         <div class="cosmic-page-content" v-html="cosmicContent"></div>
       </div>
 
@@ -108,11 +108,16 @@ export default {
 </script>
 
 <style scoped lang="css">
+  .cosmic-page-component {
+    color: lightslategray;
+  }
+  
   .return-to-select {
     font-size: 26px;
     text-align: left;
     margin: 5px 25px;
     cursor: pointer;
+    color: white;
   }
 
   .cosmic-page-image {
