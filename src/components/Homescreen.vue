@@ -1,20 +1,19 @@
 <template lang="html">
   <div class="homescreen">
     <div class="cosmic-object-selector" v-show="selectedIndex == undefined">
-      <div class="cosmic-header cosmic-panel section">
-        <navbar/>
-        <div class="cosmic-selection-titles container">
-          <h1> The Solar System.</h1>
-          <h1> We live in it, why not learn more about it?</h1>
-        </div>
-      </div>
-      
+      <h1> I want to learn more about.... </h1>
       <div class="cosmic-object-select row">
-        <section class="section cosmic-object cosmic-panel" :class="generateSectionClass(index)" v-for="(obj, index) in cosmicAssetObjs" :key="index">
-           <!-- <cosmic-asset :heroMode="true" :cosmicObj="obj" :assetKey="index" class="cosmic-asset hero-asset" /> -->
-           <cosmic-page class="cosmic-page" :cosmicObj="cosmicAssetObjs[index]" />
-        </section>
-        
+        <div class="cosmic-object col-md-3" v-on:click="setSelectedAsset(index)" v-for="(obj, index) in cosmicAssetObjs.slice(0,4)" :key="index">
+           <cosmic-asset :cosmicObj="obj" :assetKey="index" class="cosmic-asset" />
+        </div>
+
+        <div class="cosmic-object col-md-3" v-on:click="setSelectedAsset(index+4)" v-for="(obj, index) in cosmicAssetObjs.slice(4,8)" :key="index+4">
+           <cosmic-asset :cosmicObj="obj" :assetKey="index+4" class="cosmic-asset" />
+        </div>
+
+        <div class="cosmic-object col-md-3" v-on:click="setSelectedAsset(index+8)" v-for="(obj, index) in cosmicAssetObjs.slice(8)" :key="index+8">
+           <cosmic-asset :cosmicObj="obj" :assetKey="index+8" class="cosmic-asset" />
+        </div>
       </div>
     </div>
     <cosmic-page class="cosmic-page" v-if="selectedIndex != undefined" :cosmicObj="cosmicAssetObjs[selectedIndex]" />
@@ -23,8 +22,8 @@
     </div>
   </div>
 </template>
-<script>
 
+<script>
 import Navbar from './Navbar.vue'
 import CosmicAsset from './CosmicAsset.vue'
 import CosmicPage from './CosmicPage.vue'
@@ -40,10 +39,7 @@ export default {
       // homepage data from Cosmic API
       homepageData: '',
       homepageContent: '',
-      heroObj: {},
       cosmicAssetObjs: [],
-      scrollOptions: {
-      }
     }
   },
   mounted() {
@@ -66,13 +62,11 @@ export default {
         } else {
           this.cosmicAssetObjs.push(object)
         }
-        this.heroObj = this.cosmicAssetObjs[0]
       })
       if (homepageObj) this.assembleHomepageData(homepageObj)
     }).catch(err => {
       console.log('Error getting bucket data:', err)
     })
-    
     },
   methods: {
     assembleHomepageData (homepageObjFromAPI) {
@@ -85,9 +79,6 @@ export default {
       } else {
         this.$store.commit('setSelectedCosmicIndex', index)
       }
-    },
-    generateSectionClass (index) {
-      return `cosmic-section-${index}`
     }
   },
   computed: {
@@ -99,19 +90,10 @@ export default {
 </script>
 
 <style scoped lang="css">
-  .cosmic-header {
-    padding-top: 25px;
-  }
-  .cosmic-selection-titles {
-    text-align: left;
-    color: white;
-  }
   .homescreen {
     height: 100vh;
     text-align: center;
     color: lightslategray;
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
   }
 
   .homescreen h1 {
@@ -129,15 +111,10 @@ export default {
 
   .cosmic-asset {
     cursor: pointer;
-    width: 100%;
-  }
-  
-  .cosmic-asset.hero-asset {
-    width: 100%;
   }
 
   .cosmic-object {
-    width: 100%;
+    margin: 10px 0px;
   }
 
   .cosmic-page {
@@ -146,10 +123,5 @@ export default {
 
   .footer {
     padding: 25px;
-  }
-  
-  .header-expo, .cosmic-panel {
-    height: 100vh;
-    scroll-snap-align: start;
   }
 </style>
