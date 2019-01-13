@@ -93,7 +93,7 @@ export default {
   .homescreen {
     height: 100vh;
     text-align: center;
-    color: lightslategray;
+    color: cadetblue;
   }
 
   .homescreen h1 {
@@ -107,6 +107,7 @@ export default {
   .cosmic-object-select {
     width: 80%;
     margin: 50px auto;
+    animation: 2s slide-up;
   }
 
   .cosmic-asset {
@@ -123,5 +124,17 @@ export default {
 
   .footer {
     padding: 25px;
+  }
+  
+  @keyframes slide-up {
+    from {
+      margin-top: 100%;
+      height: 300%; 
+    }
+
+    to {
+      margin-top: 0%;
+      height: 100%;
+    }
   }
 </style>
