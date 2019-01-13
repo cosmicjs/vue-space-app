@@ -126,7 +126,7 @@ export default {
   }
 
   .page-left {
-    border-right: 1px solid blueviolet;
+    border-right: 1px solid lightslategray;
     height: 100%;
     padding: 25px;
   }
