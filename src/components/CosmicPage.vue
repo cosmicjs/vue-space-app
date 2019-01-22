@@ -6,7 +6,7 @@
           <i class="fas fa-arrow-left"></i> Back
         </div>
         <img class="cosmic-page-image" :src="defaultImage" />
-        <h2>{{cosmicTitle}}</h2>
+        <h2 class="cosmic-page-title">{{cosmicTitle}}</h2>
         <div class="cosmic-page-content" v-html="cosmicContent"></div>
       </div>
 
@@ -125,6 +125,12 @@ export default {
     width: 150px;
     border-radius: 50%;
   }
+  
+  .cosmic-page-content {
+    text-align: left;
+    max-width: 700px;
+    margin: 0 auto;
+  }
 
   .row {
     height: 100%;
@@ -146,12 +152,16 @@ export default {
     color: blueviolet;
     height: auto;
     margin: 10px;
+    padding: 15px;
   }
 
   .basic-fact {
     border: 1px solid cadetblue;
     color: cadetblue;
     text-align: left;
-    padding: 10px;
+  }
+  
+  .cosmic-page-title {
+    margin-bottom: 20px;
   }
 </style>

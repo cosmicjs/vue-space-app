@@ -18,7 +18,7 @@
     </div>
     <cosmic-page class="cosmic-page" v-if="selectedIndex != undefined" :cosmicObj="cosmicAssetObjs[selectedIndex]" />
     <div class="footer">
-      Proudly powered by <a href="s">Cosmic JS</a>
+      Proudly powered by <a target="_blank" href="https://cosmicjs.com/">Cosmic JS</a>
     </div>
   </div>
 </template>
