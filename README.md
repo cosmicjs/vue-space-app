@@ -1,7 +1,7 @@
-# cosmicjs-space-scholastic
-Find out how I built this project [here](https://cosmicjs.com/articles/preview/5c232ca833ae71656325d99a) 
+# Vue Space App
+Find out how this project was built [here](https://cosmicjs.com/articles/how-to-create-a-scholastic-website-using-cosmic-js-and-vuejs-jq4uszft).
 > Scholastic site about Space built using CosmicJS
-![alt text](./src/assets/screenshot.png)
+![alt text](https://cosmic-s3.imgix.net/c5760c60-234e-11e9-9b2a-813bafaac4a1-vue-cosmic.jpg?w=1200)
 
 ## Build Setup
 
